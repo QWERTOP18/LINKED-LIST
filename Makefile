@@ -1,6 +1,6 @@
 SRCS = $(shell find . -name "*.c")
 
-NAME = list.a
+NAME = libftlist.a
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -MMD -MP
