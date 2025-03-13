@@ -1,3 +1,26 @@
+## Aside
+
+```sh
+for item in $(ls | grep ft_)
+do
+  touch test/"test_${item}"
+done
+```
+
+This time, I used this to create test files, but there might have been a better way.
+
+### **`${var%pattern}` との違い**
+
+| 書き方       | 方向 | 最短 / 最長 | 例 (`example.tar.gz`) | 結果      |
+| ------------ | ---- | ----------- | --------------------- | --------- |
+| `${var#*.}`  | 左   | 最短        | `.tar.gz`             | `tar.gz`  |
+| `${var##*.}` | 左   | 最長        | `.tar.gz`             | `gz`      |
+| `${var%.*}`  | 右   | 最短        | `example.tar`         | `example` |
+| `${var%%.*}` | 右   | 最長        | `example.tar.gz`      | `example` |
+
+- `${item%.*}` → `.`より前の部分を取得（例: `sample`）
+- `${item##*.}` → `.`より後の部分を取得（例: `c`）
+
 # List Library
 
 This repository provides a linked list library implemented in C. The library includes functions for list creation, modification, iteration, and conversion.
@@ -6,43 +29,43 @@ This repository provides a linked list library implemented in C. The library inc
 
 ### List Operations
 
-| Function Name      | Description                           | Memory Allocation|
-|-------------------|-----------------------------------|---------------|
-| `ft_lst_at`       | Retrieves the nth element of the list. |                |
-| `ft_lst_find`     | Searches for an element in the list. |                |
-| `ft_lst_from_strs` | Creates a list from an array of strings. | 　　✅          |
-| `ft_lstlast`      | Returns the last element of the list. |                |
-| `ft_lstnew`       | Creates a new list element.         | 　　✅          |
-| `ft_lstsize`      | Returns the size of the list.      |                |
+| Function Name      | Description                              | Memory Allocation |
+| ------------------ | ---------------------------------------- | ----------------- |
+| `ft_lst_at`        | Retrieves the nth element of the list.   |                   |
+| `ft_lst_find`      | Searches for an element in the list.     |                   |
+| `ft_lst_from_strs` | Creates a list from an array of strings. | 　　✅            |
+| `ft_lstlast`       | Returns the last element of the list.    |                   |
+| `ft_lstnew`        | Creates a new list element.              | 　　✅            |
+| `ft_lstsize`       | Returns the size of the list.            |                   |
 
 ### List Modifiers
 
-| Function Name          | Description                             | Memory Allocation |
-|-----------------------|---------------------------------|---------------|
-| `ft_lstadd_back`      | Adds an element to the end of the list. |                |
-| `ft_lstadd_front`     | Adds an element to the front of the list. |                |
-| `ft_lstclear`         | Clears the list and frees memory. | 　　✅          |
-| `ft_lstdel_front`     | Deletes the first element of the list. | 　　✅          |
-| `ft_lstdelone`        | Deletes a single element from the list. | 　　✅          |
-| `ft_lstmerge`         | Merges two lists.                     |                |
-| `ft_lstremove_if`     | Removes elements matching a condition. | 　　✅          |
-| `ft_lstreverse`       | Reverses the list.                     |                |
-| `ft_lstsort`          | Sorts the list.                        |                |
-| `ft_sorted_list_insert` | Inserts an element in a sorted list. | 　　✅          |
+| Function Name           | Description                               | Memory Allocation |
+| ----------------------- | ----------------------------------------- | ----------------- |
+| `ft_lstadd_back`        | Adds an element to the end of the list.   |                   |
+| `ft_lstadd_front`       | Adds an element to the front of the list. |                   |
+| `ft_lstclear`           | Clears the list and frees memory.         | 　　✅            |
+| `ft_lstdel_front`       | Deletes the first element of the list.    | 　　✅            |
+| `ft_lstdelone`          | Deletes a single element from the list.   | 　　✅            |
+| `ft_lstmerge`           | Merges two lists.                         |                   |
+| `ft_lstremove_if`       | Removes elements matching a condition.    | 　　✅            |
+| `ft_lstreverse`         | Reverses the list.                        |                   |
+| `ft_lstsort`            | Sorts the list.                           |                   |
+| `ft_sorted_list_insert` | Inserts an element in a sorted list.      | 　　✅            |
 
 ### Iterators & Maps
 
-| Function Name      | Description                                     | Memory Allocation |
-|-------------------|-----------------------------------------|-----------|
-| `ft_lst_foreach`  | Applies a function to each element.       |                |
-| `ft_lst_foreach_if` | Applies a function to elements meeting a condition. |                |
-| `ft_lstmap`       | Creates a new list by applying a function. | 　　✅          |
+| Function Name       | Description                                         | Memory Allocation |
+| ------------------- | --------------------------------------------------- | ----------------- |
+| `ft_lst_foreach`    | Applies a function to each element.                 |                   |
+| `ft_lst_foreach_if` | Applies a function to elements meeting a condition. |                   |
+| `ft_lstmap`         | Creates a new list by applying a function.          | 　　✅            |
 
 ### Conversion
 
-| Function Name      | Description                          | Memory Allocation |
-|-------------------|----------------------------------|------------------|
-| `ft_list_to_strs` | Converts a list to an array of strings. | 　　✅          |
+| Function Name     | Description                             | Memory Allocation |
+| ----------------- | --------------------------------------- | ----------------- |
+| `ft_list_to_strs` | Converts a list to an array of strings. | 　　✅            |
 
 ## Compilation
 
@@ -55,6 +78,7 @@ make
 ## Usage
 
 Include `ft_lst.h` in your C project and link against `list.a` to use the functions.
+
 ```c
 #include "ft_lst.h"
 #include <stdio.h>
