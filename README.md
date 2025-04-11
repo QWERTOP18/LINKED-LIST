@@ -1,26 +1,3 @@
-## Aside
-
-```sh
-for item in $(ls | grep ft_)
-do
-  touch test/"test_${item}"
-done
-```
-
-This time, I used this to create test files, but there might have been a better way.
-
-### **`${var%pattern}` との違い**
-
-| 書き方       | 方向 | 最短 / 最長 | 例 (`example.tar.gz`) | 結果      |
-| ------------ | ---- | ----------- | --------------------- | --------- |
-| `${var#*.}`  | 左   | 最短        | `.tar.gz`             | `tar.gz`  |
-| `${var##*.}` | 左   | 最長        | `.tar.gz`             | `gz`      |
-| `${var%.*}`  | 右   | 最短        | `example.tar`         | `example` |
-| `${var%%.*}` | 右   | 最長        | `example.tar.gz`      | `example` |
-
-- `${item%.*}` → `.`より前の部分を取得（例: `sample`）
-- `${item##*.}` → `.`より後の部分を取得（例: `c`）
-
 # List Library
 
 This repository provides a linked list library implemented in C. The library includes functions for list creation, modification, iteration, and conversion.
